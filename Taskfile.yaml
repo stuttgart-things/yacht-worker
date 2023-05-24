@@ -53,14 +53,12 @@ tasks:
     deps: [build-worker]
     cmds:
       - "{{ .PROJECT_NAME }}"
-    env:
-      SERVER_PORT: "{{ .LOCAL_SERVER_PORT }}"
 
   run-container:
     desc: Run container image
     deps: [build-image]
     cmds:
-      - sudo nerdctl run -e SERVER_PORT={{ .LOCAL_CONTAINER_SERVER_PORT }} -p {{ .LOCAL_CONTAINER_SERVER_PORT }}:{{ .LOCAL_CONTAINER_SERVER_PORT }} {{ .REGISTRY }}/{{ .PROJECT_NAME }}/{{ .PROJECT_NAME }}:{{ .DATE }}-{{ .UPDATED_TAG_VERSION }}
+      - sudo nerdctl run {{ .REGISTRY }}/{{ .REPOSITORY_NAME }}/{{ .PROJECT_NAME }}:{{ .DATE }}-{{ .UPDATED_TAG_VERSION }}
 
   tag:
     desc: commit, push & tag the module
