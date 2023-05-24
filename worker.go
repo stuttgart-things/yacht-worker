@@ -1,6 +1,7 @@
 /*
 Copyright © 2023 Patrick Hermann patrick.hermann@sva.de
 */
+
 package main
 
 import (
@@ -8,6 +9,8 @@ import (
 	"os"
 	"strconv"
 	"strings"
+
+	"github.com/stuttgart-things/yacht-worker/worker"
 
 	"github.com/fatih/color"
 	sthingsBase "github.com/stuttgart-things/sthingsBase"
@@ -75,7 +78,7 @@ func main() {
 	}
 
 	fmt.Println(prs)
-	// internal.ConsumeRevisionRun(prs)
+	worker.ConsumeRevisionRun(prs)
 	log.Warn("YW stopped")
 	os.Exit(0)
 

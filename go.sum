@@ -428,8 +428,8 @@ github.com/stretchr/testify v1.7.4/go.mod h1:yNjHg4UonilssWZ8iaSj1OCr/vHnekPRkoO
 github.com/stretchr/testify v1.8.0/go.mod h1:yNjHg4UonilssWZ8iaSj1OCr/vHnekPRkoO+kdMU+MU=
 github.com/stretchr/testify v1.8.1/go.mod h1:w2LPCIKwWwSfY2zedu0+kehJoqGctiVI29o6fzry7u4=
 github.com/stretchr/testify v1.8.2 h1:+h33VjcLVPDHtOdpUCuF+7gSuG3yGIftsP1YvFihtJ8=
-github.com/stuttgart-things/sthingsBase v0.1.11 h1:QgvFZJKTK0ClxcZMHICJ3bBW/FucpvXDXLpTIfzdphU=
-github.com/stuttgart-things/sthingsBase v0.1.11/go.mod h1:m8KEQVzuV5wwxg+G8OWb+YXOVp0ZRq3MeVUT3p5N8zc=
+github.com/stuttgart-things/sthingsBase v0.1.12 h1:biRxFhVBr+4xSkJH2KIt+5Dq8L90pzKLzdTvx72FlpY=
+github.com/stuttgart-things/sthingsBase v0.1.12/go.mod h1:m8KEQVzuV5wwxg+G8OWb+YXOVp0ZRq3MeVUT3p5N8zc=
 github.com/stuttgart-things/sthingsCli v0.1.8 h1:d0RAfH3Y68If3dQXX1LklAzPOJrk/9oB5ZNyxK8GgGQ=
 github.com/stuttgart-things/sthingsCli v0.1.8/go.mod h1:+qXypFHVm6q3FF+Y/Q5UQpgjcDDIEKuRWC17CmJO+/E=
 github.com/stuttgart-things/sthingsK8s v0.1.3 h1:S83sBEY6rbqQku5AH2MimTDwODzcwVlRIBYgZC+y39A=

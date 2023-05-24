@@ -15,14 +15,14 @@ import (
 )
 
 var (
-	elasticSearchUrl   = os.Getenv("ELASTICSEARCH_URL")
-	elasticSearchIndex = os.Getenv("ELASTICSEARCH_STATUS_INDEX")
-	sendToElastic      = os.Getenv("STATUS_TO_ELASTICSEARCH")
-	logfilePathStatus  = "yaw-status.log"
-	redisAddress       = os.Getenv("REDIS_SERVER")
-	redisPort          = os.Getenv("REDIS_PORT")
-	redisPassword      = os.Getenv("REDIS_PASSWORD")
-	ctx                = context.Background()
+	// elasticSearchUrl   = os.Getenv("ELASTICSEARCH_URL")
+	// elasticSearchIndex = os.Getenv("ELASTICSEARCH_STATUS_INDEX")
+	sendToElastic = os.Getenv("STATUS_TO_ELASTICSEARCH")
+	// logfilePathStatus  = "yaw-status.log"
+	redisAddress  = os.Getenv("REDIS_SERVER")
+	redisPort     = os.Getenv("REDIS_PORT")
+	redisPassword = os.Getenv("REDIS_PASSWORD")
+	ctx           = context.Background()
 )
 
 type PipelineRunStatus struct {

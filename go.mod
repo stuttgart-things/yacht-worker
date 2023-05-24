@@ -5,7 +5,7 @@ go 1.20
 require (
 	github.com/fatih/color v1.15.0
 	github.com/redis/go-redis/v9 v9.0.4
-	github.com/stuttgart-things/sthingsBase v0.1.11
+	github.com/stuttgart-things/sthingsBase v0.1.12
 	github.com/stuttgart-things/sthingsCli v0.1.8
 	github.com/stuttgart-things/sthingsK8s v0.1.3
 	github.com/tektoncd/pipeline v0.47.0
