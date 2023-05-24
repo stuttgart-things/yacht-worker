@@ -53,6 +53,10 @@ tasks:
     deps: [build-worker]
     cmds:
       - "{{ .PROJECT_NAME }}"
+    env:
+      PR_RANGES: "2;1"
+      REVISION_RUN_ID: 3c5ac44c6fec00989c7e27b36630a82cdfd26e3b
+
 
   run-container:
     desc: Run container image

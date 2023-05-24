@@ -79,7 +79,6 @@ func VerifyPipelineRunStatus(name string) {
 				status := fmt.Sprint(prList.Status)
 
 				prStatus := GetPipelineRunStatus(status)
-				// prStatus := GetPipelineRunStatus(name, status, sthingsBase.ConvertStringToBoolean(sendToElastic))
 
 				if prStatus["status"] != "Unknown" {
 
