@@ -59,7 +59,7 @@ func GetRevisionRunStatus(prName string) int {
 		panic(err)
 	}
 
-	// decrease total count
+	// DECREASE TOTAL COUNT
 	statusValue, err := redisClient.Get(ctx, "countPipelineRuns").Result()
 	if err != nil {
 		panic(err)
