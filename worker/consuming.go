@@ -1,3 +1,7 @@
+/*
+Copyright © 2023 Patrick Hermann patrick.hermann@sva.de
+*/
+
 package worker
 
 import (
@@ -5,9 +9,8 @@ import (
 	"os"
 	"time"
 
-	sthingsK8s "github.com/stuttgart-things/sthingsK8s"
-
 	sthingsBase "github.com/stuttgart-things/sthingsBase"
+	sthingsK8s "github.com/stuttgart-things/sthingsK8s"
 
 	"sync"
 )
