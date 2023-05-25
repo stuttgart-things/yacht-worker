@@ -25,7 +25,7 @@ func ConsumeRevisionRun(revisionRun map[int][]string) error {
 	clusterConfig, clusterConnection := sthingsK8s.GetKubeConfig(os.Getenv("KUBECONFIG"))
 	log.Info("Connected " + clusterConnection + " the cluster")
 
-	//CREATE AND WATCH PRS
+	//CREATING AND WATCHING PRS
 	for i := 0; i < (len(revisionRun)); i++ {
 
 		log.Info("Stage: ", i)
@@ -54,7 +54,7 @@ func ConsumeRevisionRun(revisionRun map[int][]string) error {
 				log.Info("Pipeline: ", pipeline)
 				log.Info("Verify for: ", resourceName)
 
-				// VerifyPipelineRunStatus(resourceName)
+				VerifyPipelineRunStatus(resourceName)
 
 			}()
 
@@ -63,7 +63,7 @@ func ConsumeRevisionRun(revisionRun map[int][]string) error {
 
 	}
 
-	fmt.Println("I am here")
+	// fmt.Println("I am here")
 	// os.Exit(0)
 
 	return nil

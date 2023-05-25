@@ -12,6 +12,8 @@ import (
 
 	"github.com/stuttgart-things/yacht-worker/worker"
 
+	// "github.com/stuttgart-things/yacht-worker/worker"
+
 	"github.com/fatih/color"
 	sthingsBase "github.com/stuttgart-things/sthingsBase"
 	sthingsCli "github.com/stuttgart-things/sthingsCli"
@@ -20,7 +22,7 @@ import (
 )
 
 var (
-	logfilePath   = "yaw.log"
+	logfilePath   = "yw.log"
 	shortened     = false
 	version       = "unset"
 	date          = "unknown"
@@ -33,6 +35,8 @@ var (
 	redisPassword = os.Getenv("REDIS_PASSWORD")
 	prRanges      = os.Getenv("PR_RANGES")
 	revisionRunID = os.Getenv("REVISION_RUN_ID")
+	prs           = make(map[int][]string)
+	prCount       = strings.Split(prRanges, ";")
 )
 
 const banner = `
@@ -49,35 +53,32 @@ __/  / /      \ \____________\
 
 func main() {
 
+	// STARTUP / STATUS OUTPUT
 	color.Cyan(banner)
 	color.Cyan("YACHT WORKER")
 	resp := goVersion.FuncWithOutput(shortened, version, commit, date, output)
 	color.Cyan(resp + "\n")
-
 	log.Info("YW server started")
 
-	prs := make(map[int][]string)
+	// GETTING REVISIONRUN DATA FROM REDIS
+	pipelineRunData := redisClient.HGetAll(revisionRunID).Val()
 
-	customerData := redisClient.HGetAll(revisionRunID).Val()
-
-	s := strings.Split(prRanges, ";")
-
-	for i := 0; i < len(s); i++ {
+	// CREATE PRS + DEBUG OUTPUT
+	for i := 0; i < len(prCount); i++ {
 		fmt.Println("STAGE", i)
-
-		intVar, _ := strconv.Atoi(s[i])
+		intVar, _ := strconv.Atoi(prCount[i])
 
 		for j := 0; j < intVar; j++ {
-
-			prs[i] = append(prs[i], customerData[strconv.Itoa(i)+":"+strconv.Itoa(j)])
+			prs[i] = append(prs[i], pipelineRunData[strconv.Itoa(i)+":"+strconv.Itoa(j)])
 			fmt.Println("PIPELINE", j)
-
-			fmt.Println(customerData[strconv.Itoa(i)+"."+strconv.Itoa(j)])
-
+			fmt.Println(pipelineRunData[strconv.Itoa(i)+"."+strconv.Itoa(j)])
 		}
 	}
 
+	// DEBUG OUTPUT OF ALL PRS
 	fmt.Println(prs)
+
+	// CREATING AND WATCHING RUNS
 	worker.ConsumeRevisionRun(prs)
 	log.Warn("YW stopped")
 	os.Exit(0)

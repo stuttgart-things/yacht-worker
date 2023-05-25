@@ -26,7 +26,7 @@ import (
 )
 
 var (
-	logfilePath     = "yaw-informer.log"
+	logfilePath     = "yw.log"
 	prApiName       = "tekton.dev"
 	prApiVersion    = "v1beta1"
 	prApiResource   = "pipelineruns"

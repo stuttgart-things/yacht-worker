@@ -10,7 +10,6 @@ import (
 	"os"
 
 	redis "github.com/redis/go-redis/v9"
-
 	sthingsBase "github.com/stuttgart-things/sthingsBase"
 )
 
