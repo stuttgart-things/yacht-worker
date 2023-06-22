@@ -35,7 +35,7 @@ func ConsumeRevisionRun(revisionRun map[int][]string) error {
 			wg.Add(1)
 			log.Info("Concurrent pipelines for this stage:", len(revisionRun[i]))
 
-			fmt.Println(pr)
+			// fmt.Println(pr)
 
 			renderedPipelineRun := pr
 			stage := i
@@ -63,7 +63,7 @@ func ConsumeRevisionRun(revisionRun map[int][]string) error {
 
 	}
 
-	// fmt.Println("I am here")
+	fmt.Println("END OF WATCH")
 	// os.Exit(0)
 
 	return nil

@@ -71,12 +71,12 @@ func main() {
 		for j := 0; j < intVar; j++ {
 			prs[i] = append(prs[i], pipelineRunData[strconv.Itoa(i)+":"+strconv.Itoa(j)])
 			fmt.Println("PIPELINE", j)
-			fmt.Println(pipelineRunData[strconv.Itoa(i)+"."+strconv.Itoa(j)])
+			//fmt.Println(pipelineRunData[strconv.Itoa(i)+"."+strconv.Itoa(j)])
 		}
 	}
 
 	// DEBUG OUTPUT OF ALL PRS
-	fmt.Println(prs)
+	//fmt.Println(prs)
 
 	// CREATING AND WATCHING RUNS
 	worker.ConsumeRevisionRun(prs)
