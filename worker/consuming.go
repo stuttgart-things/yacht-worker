@@ -32,7 +32,7 @@ func ConsumeRevisionRun(revisionRun map[int][]string) error {
 
 		for j, pr := range revisionRun[i] {
 
-			wg.Add(len(revisionRun))
+			wg.Add(len(revisionRun) - 1)
 			log.Info("Concurrent pipelines for this stage:", len(revisionRun[i]))
 
 			// fmt.Println(pr)
