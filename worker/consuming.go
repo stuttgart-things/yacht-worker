@@ -9,7 +9,6 @@ import (
 	"os"
 	"time"
 
-	redis "github.com/redis/go-redis/v9"
 	sthingsBase "github.com/stuttgart-things/sthingsBase"
 	sthingsK8s "github.com/stuttgart-things/sthingsK8s"
 
@@ -33,7 +32,7 @@ func ConsumeRevisionRun(revisionRun map[int][]string) error {
 
 		for j, pr := range revisionRun[i] {
 
-			wg.Add(1)
+			wg.Add(len(revisionRun))
 			log.Info("Concurrent pipelines for this stage:", len(revisionRun[i]))
 
 			// fmt.Println(pr)
@@ -54,16 +53,6 @@ func ConsumeRevisionRun(revisionRun map[int][]string) error {
 				log.Info("Stage: ", stage)
 				log.Info("Pipeline: ", pipeline)
 				log.Info("Verify for: ", resourceName)
-
-				rdb := redis.NewClient(&redis.Options{
-					Addr:     redisAddress + ":" + redisPort,
-					Password: redisPassword, // no password set
-					DB:       0,             // use default DB
-				})
-
-				rdb.Set(ctx, "Stage", stage, 0).Err()
-				rdb.Set(ctx, "Pipeline", pipeline, 0).Err()
-				rdb.Set(ctx, "Verify", resourceName, 0).Err()
 
 				VerifyPipelineRunStatus(resourceName)
 
