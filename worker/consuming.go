@@ -61,7 +61,9 @@ func ConsumeRevisionRun(revisionRun map[int][]string) error {
 					DB:       0,             // use default DB
 				})
 
-				rdb.Set(ctx, "codehub.sva.de/Lab/stuttgart-things/dev/skipper:dev-feature.grpc", "aee0b6889d66752fdb57592eb0aecdffd47bb97d0d56", 0).Err()
+				rdb.Set(ctx, "Stage", stage, 0).Err()
+				rdb.Set(ctx, "Pipeline", pipeline, 0).Err()
+				rdb.Set(ctx, "Verify", resourceName, 0).Err()
 
 				VerifyPipelineRunStatus(resourceName)
 
