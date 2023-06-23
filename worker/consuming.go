@@ -9,6 +9,7 @@ import (
 	"os"
 	"time"
 
+	redis "github.com/redis/go-redis/v9"
 	sthingsBase "github.com/stuttgart-things/sthingsBase"
 	sthingsK8s "github.com/stuttgart-things/sthingsK8s"
 
@@ -53,6 +54,14 @@ func ConsumeRevisionRun(revisionRun map[int][]string) error {
 				log.Info("Stage: ", stage)
 				log.Info("Pipeline: ", pipeline)
 				log.Info("Verify for: ", resourceName)
+
+				rdb := redis.NewClient(&redis.Options{
+					Addr:     redisAddress + ":" + redisPort,
+					Password: redisPassword, // no password set
+					DB:       0,             // use default DB
+				})
+
+				rdb.Set(ctx, "codehub.sva.de/Lab/stuttgart-things/dev/skipper:dev-feature.grpc", "aee0b6889d66752fdb57592eb0aecdffd47bb97d0d56", 0).Err()
 
 				VerifyPipelineRunStatus(resourceName)
 
